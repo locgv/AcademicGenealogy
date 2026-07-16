@@ -114,3 +114,63 @@ void free_graph(Graph* graph) {
     graph->vertices = NULL;
     graph->num_vertices = 0;
 }
+// Hàm hỗ trợ tìm kiếm Node theo ID (Dùng nội bộ cho hàm thêm thành viên)
+TreeNode* find_node_helper(TreeNode* current, const char* id) {
+    if (current == NULL) return NULL;
+    
+    // Nếu tìm thấy ID trùng khớp
+    if (strcmp(current->info.id, id) == 0) return current;
+    
+    // Tìm tiếp trong nhánh con (học trò)
+    TreeNode* found_in_child = find_node_helper(current->first_child, id);
+    if (found_in_child != NULL) return found_in_child;
+    
+    // Tìm tiếp trong nhánh anh em (những học trò cùng cấp)
+    return find_node_helper(current->next_sibling, id);
+}
+
+// Thêm thành viên vào đúng người hướng dẫn
+bool add_tree_member(AcademicTree* tree, const char* advisor_id, Person new_member) {
+    // 1. Kiểm tra dữ liệu đầu vào (Rất quan trọng!)
+    if (tree == NULL || tree->root == NULL) {
+        printf("[LỖI] Cây chưa được khởi tạo hoặc chưa có Giảng viên gốc!\n");
+        return false;
+    }
+    if (advisor_id == NULL) {
+        printf("[LỖI] Mã ID người hướng dẫn không hợp lệ!\n");
+        return false;
+    }
+
+    // 2. Tìm Node của người hướng dẫn (Thầy/Cô) trong cây
+    TreeNode* advisor_node = find_node_helper(tree->root, advisor_id);
+    if (advisor_node == NULL) {
+        printf("[LỖI] Không tìm thấy người hướng dẫn có ID: %s trong hệ thống!\n", advisor_id);
+        return false;
+    }
+
+    // 3. Tạo Node mới cho sinh viên bằng hàm có sẵn
+    TreeNode* new_node = create_tree_node(new_member);
+    if (new_node == NULL) {
+        return false; // Hết bộ nhớ
+    }
+    
+    // Liên kết ngược để sinh viên nhận diện Thầy của mình
+    new_node->parent = advisor_node; 
+
+    // 4. Đảm bảo cây được liên kết đúng cấu trúc LCRS
+    if (advisor_node->first_child == NULL) {
+        // Trường hợp Thầy chưa có học trò nào -> Sinh viên này là "con đầu lòng"
+        advisor_node->first_child = new_node;
+    } else {
+        // Trường hợp Thầy đã có học trò -> Tìm "em út" hiện tại để nối thêm vào
+        TreeNode* current_child = advisor_node->first_child;
+        while (current_child->next_sibling != NULL) {
+            current_child = current_child->next_sibling; // Duyệt tới cuối danh sách
+        }
+        // Gắn sinh viên mới vào làm "em út"
+        current_child->next_sibling = new_node;
+    }
+
+    printf("[THÀNH CÔNG] Đã thêm %s vào dưới sự hướng dẫn của %s.\n", new_member.name, advisor_node->info.name);
+    return true;
+}
