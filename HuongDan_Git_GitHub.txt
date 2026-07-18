@@ -1,0 +1,54 @@
+
+HƯỚNG DẪN ĐẨY (UPLOAD) CODE LÊN GITHUB BẰNG VS CODE & ADD COLLABORATORS
+
+Tài liệu này hướng dẫn chi tiết từng bước cho nhóm mình để đồng bộ mã nguồn và làm việc chung trên GitHub thông qua VS Code.
+
+PHẦN I: CÁC BƯỚC ĐẨY CODE LÊN GITHUB BẰNG VS CODE
+
+Bước 1: Mở thư mục dự án trong VS Code
+   1. Mở phần mềm VS Code.
+   2. Chọn File -> Open Folder...
+   3. Chọn thư mục "C:\AcademicGenealogy" và nhấn Select Folder.
+
+Bước 2: Khởi tạo Git (Git Initialize)
+   1. Click biểu tượng Source Control ở thanh công cụ bên trái (Hình 3 nhánh chụm lại, hoặc nhấn Ctrl + Shift + G).
+   2. Nhấp nút "Initialize Repository". Lúc này danh sách các tệp tin sẽ hiện ra.
+
+Bước 3: Commit (Lưu thay đổi nội bộ)
+   1. Tại ô nhập chữ "Message" ở tab Source Control, nhập nội dung mô tả:
+      "Phan 1: Thiet ke cau truc du lieu Academic Genealogy" (ví dụ)
+   2. Nhấn nút "Commit" (hoặc bấm biểu tượng dấu tích ✓). Các file sẽ tạm lưu cục bộ.
+
+Bước 4: Đẩy lên GitHub (Publish to GitHub)
+   1. Nhấn nút màu xanh "Publish Branch" ở tab Source Control (hoặc click dấu ba chấm "..." -> Remote -> Publish to GitHub).
+   2. Nếu VS Code yêu cầu đăng nhập, chọn "Allow" và làm theo hướng dẫn đăng nhập tài khoản GitHub trên trình duyệt web.
+   3. VS Code sẽ hỏi kiểu kho chứa:
+      - Chọn "Publish to GitHub public repository" (Kho công khai - khuyên dùng để nhóm dễ lấy link).
+   4. Chờ vài giây để VS Code tự động tạo repo và đẩy code lên. Khi xong sẽ có nút "Open on GitHub" xuất hiện ở góc dưới bên phải màn hình.
+
+PHẦN II: CÁCH THÊM THÀNH VIÊN VÀO NHÓM
+
+Sau khi đẩy code lên GitHub thành công, người tạo repo cần cấp quyền ghi cho thành viên:
+1. Mở trang web GitHub của Repository vừa tạo trên trình duyệt.
+2. Click vào tab "Settings" (hình bánh răng ở thanh menu ngang phía trên).
+3. Chọn mục "Collaborators" ở cột menu bên trái (dưới mục Access).
+4. Nhấn nút xanh "Add people".
+5. Nhập tên tài khoản GitHub (Username) hoặc Email của Ngọc và Tuyền -> Chọn tài khoản -> Nhấn "Add ... to this repository".
+6. Thành viên kiểm tra Email hoặc thông báo trên GitHub của mình, nhấn "Accept Invitation" để chấp nhận lời mời làm việc chung.
+
+PHẦN III: HƯỚNG DẪN LẤY CODE VỀ VÀ ĐẨY CODE LÊN
+
+1. Để tải code về máy:
+   - Các bạn mở Git Bash (hoặc Terminal của VS Code) gõ lệnh:
+     git clone <ĐƯỜNG_LINK_GITHUB>
+   - Hoặc đơn giản là truy cập link GitHub -> Nhấn nút xanh "Code" -> Chọn "Download ZIP" rồi giải nén ra.
+
+2. Để đẩy code lên sau khi hoàn thành phần việc của mình:
+   - Mở thư mục code trong VS Code.
+   - Làm tương tự Bước 3 (Nhập Message rồi bấm Commit).
+   - Nhấn nút "Sync Changes" (Đồng bộ thay đổi) ở góc dưới hoặc ở tab Source Control để đẩy code lên GitHub chung.
+
+PHẦN IV: LINK VIDEO HƯỚNG DẪN TRỰC QUAN TRÊN YOUTUBE
+
+- Hướng dẫn đẩy code lên GitHub bằng VS Code:
+https://www.youtube.com/watch?v=EHC_CUTXbdY 

@@ -1,0 +1,11 @@
+# Biên dịch đầu ra (C/C++)
+*.exe
+*.o
+*.obj
+*.out
+
+# Tệp cấu hình IDE (nếu có)
+.vscode/
+.idea/
+*.suo
+*.user
