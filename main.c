@@ -128,5 +128,3 @@ int main() {
     printf("\n[SUCCESS] Thu hoi bo nho hoan toan. Kiem thu compile va setup thanh cong!\n");
     return 0;
 }
-
- 
